@@ -1,1 +1,1 @@
-# MoonXProRESTjava
+# MoonXPro REST API Demo - JAVA
