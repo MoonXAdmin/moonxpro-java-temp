@@ -1,9 +1,6 @@
 package com.moonx.api;
 
-import com.alibaba.fastjson.JSONObject;
-
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.lang3.RandomStringUtils;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -41,13 +38,4 @@ public class ApiSignature {
         return sign;
     }
 
-    public static boolean checkSign(String response, String apiSecret) {
-        JSONObject responseJson = JSONObject.parseObject(response);
-        JSONObject dataJson = responseJson.getJSONObject("data");
-        long timestamp = responseJson.getLongValue("timestamp");
-        String nonceStr = responseJson.getString("nonceStr");
-        String responseSign = responseJson.getString("sign");
-        String sign = generateSign(dataJson, timestamp, nonceStr, apiSecret);
-        return responseSign.equals(sign);
-    }
 }
